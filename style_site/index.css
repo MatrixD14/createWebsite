@@ -2,50 +2,50 @@ input,
 .limite,
 label,
 btto {
-    margin: 5px 10px; 
+  margin: 5px 10px;
 }
 input,
 body,
 .limite,
 label,
 btto,
-#stopbutton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#stopbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 body {
-    height: 100vh;
-    margin: 0;
-    background: black;
-    color: white;
+  height: 100vh;
+  margin: 0;
+  background: black;
+  color: white;
 }
 .limite {
-    background: white;
-    border: 3px solid lightgreen;
-    width: 750px;
-    height: 500px;
+  background: white;
+  border: 3px solid lightgreen;
+  width: 750px;
+  height: 500px;
 }
 input,
 label {
-    border: none;
-    height: 30px;
-    width: 200px;
-    font-size: 30px;
+  border: none;
+  height: 30px;
+  width: 200px;
+  font-size: 30px;
 }
-input{
-    text-align: center;
-    appearance: textfield;
-    -moz-appearance: textfield;
-} 
+input {
+  text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button {
-    text-align: center;
+  text-align: center;
   -webkit-appearance: none;
 }
-#stopbutton{
-    width: 100%;
-    height: 100%;
-    pointer-events: all;
-    background: transparent;
+#stopbutton {
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+  background: transparent;
 }
