@@ -8,15 +8,16 @@ const screenX = document.querySelector("#valorx"),
   pai = document.querySelector("#stopbutton");
 let select = null;
 let armaze = [];
+let inputObj = ['p',"div",'h1','h2','h3','h4','button'];
 screenName.value = "new type the object";
 frontSize.value = 10;
 screenX.value = 200;
 screenY.value = 50;
 background.value = "gray";
 screenColor.value = "white";
-buttonCreate("#par", "p");
-buttonCreate("#buttons", "button");
-buttonCreate("#block", "div");
+inputObj.forEach((e)=>{
+  buttonCreate('#'+e,e);
+});
 document.querySelector("#enter").addEventListener("click", function () {
   if (select) {
     nomeObject(
@@ -36,9 +37,9 @@ function buttonCreate(name, typeObject) {
     if ((screenX.value > 0 && screenY.value > 0) || frontSize.value > 0) {
       create(typeObject);
       onoffedita("1", "auto");
+    messagem("add scale");
       return;
     }
-    messagem("add scale");
   });
 }
 

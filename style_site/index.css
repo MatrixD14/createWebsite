@@ -49,5 +49,11 @@ input::-webkit-outer-spin-button {
   pointer-events: all;
   position: relative;
   background: transparent;
-  overflow: hidden;
+  //overflow: hidden;
+}
+#input{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  border: 2px solid blue;
 }
