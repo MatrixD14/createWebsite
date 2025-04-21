@@ -4,19 +4,23 @@ const screenX = document.querySelector("#valorx"),
   frontSize = document.querySelector("#font_size"),
   screenColor = document.querySelector("#Color"),
   screenName = document.querySelector("#name"),
+  border = document.querySelector("#border"),
+  border_radio = document.querySelector("#border_radius"),
   editer = document.querySelector("#edite"),
   pai = document.querySelector("#stopbutton");
 let select = null;
 let armaze = [];
-let inputObj = ['p',"div",'h1','h2','h3','h4','button'];
+let inputObj = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "button"];
 screenName.value = "new type the object";
-frontSize.value = 10;
+frontSize.value = "";
 screenX.value = 200;
 screenY.value = 50;
 background.value = "gray";
 screenColor.value = "white";
-inputObj.forEach((e)=>{
-  buttonCreate('#'+e,e);
+border.value = "none";
+border_radio.value = "0";
+inputObj.forEach((e) => {
+  buttonCreate("#" + e, e);
 });
 document.querySelector("#enter").addEventListener("click", function () {
   if (select) {
@@ -27,17 +31,19 @@ document.querySelector("#enter").addEventListener("click", function () {
       background,
       screenColor,
       screenX,
-      screenY
+      screenY,
+      border,
+      border_radio
     );
   }
 });
 
 function buttonCreate(name, typeObject) {
   document.querySelector(name).addEventListener("click", () => {
-    if ((screenX.value > 0 && screenY.value > 0) || frontSize.value > 0) {
+    if (screenX.value > 0 && screenY.value > 0) {
       create(typeObject);
       onoffedita("1", "auto");
-    messagem("add scale");
+      messagem("add scale");
       return;
     }
   });
@@ -63,7 +69,9 @@ function nomeObject(
   background,
   Color,
   largura,
-  altura
+  altura,
+  borda,
+  borderradio
 ) {
   object.style.display = "flex";
   object.style.justifyContent = "center";
@@ -84,10 +92,18 @@ function nomeObject(
   }
 
   if (!(fontsize?.value && fontsize.value > 0)) {
-    fontsize.value = 10;
-    object.style.fontSize = fontsize.value + "px";
+    fontsize.value = "";
+    object.style.fontSize = fontsize.value;
     return;
   }
+  if (!(borderradio?.value && borderradio.value > 0)) {
+    borderradio.value = "0";
+    object.style.borderRadius = borderradio.value + "px";
+    return;
+  }
+
+  object.style.border = borda.value;
+  object.style.borderRadius = borderradio.value;
   object.style.width = largura.value + "px";
   object.style.height = altura.value + "px";
   object.style.fontSize = fontsize.value + "px";
@@ -103,7 +119,9 @@ function create(html) {
     background,
     screenColor,
     screenX,
-    screenY
+    screenY,
+    border,
+    border_radio
   );
   object.addEventListener("click", function (e) {
     e.stopPropagation();
@@ -144,8 +162,10 @@ function selectObject(object) {
   screenName.value = object.textContent;
   background.value = object.style.backgroundColor;
   screenColor.value = object.style.color;
-  if ((screenX.value > 0 && screenY.value > 0) || frontSize.value > 0) {
-    frontSize.value = parseInt(object.style.fontSize) || "";
+  border.value = object.style.border;
+  border_radio.value = object.style.borderRadius;
+  frontSize.value = parseInt(object.style.fontSize) || "";
+  if (screenX.value > 0 && screenY.value > 0) {
     screenX.value = parseInt(object.style.width) || "";
     screenY.value = parseInt(object.style.height) || "";
   }
@@ -178,30 +198,30 @@ function moveobject(object, onoff) {
     onoffmove = false;
   object.style.position = "absolute";
   object.style.cursor = "grab";
-  function getClientXY(e){
-    if(e.touches){
-      return {xs:e.touches[0].clientX,ys:e.touches[0].clientY};
+  function getClientXY(e) {
+    if (e.touches) {
+      return { xs: e.touches[0].clientX, ys: e.touches[0].clientY };
     }
-    return {xs:e.clientX,ys:e.clientY};
+    return { xs: e.clientX, ys: e.clientY };
   }
-  function startmove(e){
+  function startmove(e) {
     e.stopPropagation();
     onoffmove = true;
-    let {xs,ys} = getClientXY(e);
+    let { xs, ys } = getClientXY(e);
     let obj = object.getBoundingClientRect();
     eixoObjX = xs - obj.left;
     eixoObjY = ys - obj.top;
-    
+
     document.addEventListener("mouseup", offMove);
     document.addEventListener("mousemove", onMove);
-    document.addEventListener("touchmove", onMove,{passive:false});
+    document.addEventListener("touchmove", onMove, { passive: false });
     document.addEventListener("touchend", offMove);
-  };
+  }
 
   function onMove(e) {
     if (!onoffmove || onoff > 0) return;
     e.preventDefault();
-    let {xs,ys} = getClientXY(e);
+    let { xs, ys } = getClientXY(e);
     let pospai = pai.getBoundingClientRect();
     let x = xs - pospai.left - eixoObjX,
       y = ys - pospai.top - eixoObjY;
@@ -211,7 +231,7 @@ function moveobject(object, onoff) {
 
     object.style.left = x + "px";
     object.style.top = y + "px";
-  };
+  }
 
   function offMove() {
     onoffmove = false;
@@ -219,14 +239,14 @@ function moveobject(object, onoff) {
     document.removeEventListener("mouseup", offMove);
     document.removeEventListener("touchmove", onMove);
     document.removeEventListener("touchend", offMove);
-  };
-  object.addEventListener("mousedown",startmove);
-  object.addEventListener("touchstart",startmove,{passive:false});
+  }
+  object.addEventListener("mousedown", startmove);
+  object.addEventListener("touchstart", startmove, { passive: false });
 }
 
 function messagem(erro) {
   let object = document.createElement("p");
-  nomeObject(object, erro, "50px", "gray", "white", "300px", "100px");
+  // nomeObject(object, erro, "50px", "gray", "white", "300px", "100px");
   console.log("entro aqui");
   pai.appendChild(object);
   setTimeout(() => {
