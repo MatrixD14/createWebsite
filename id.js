@@ -7,7 +7,8 @@ const screenX = document.querySelector("#valorx"),
   border = document.querySelector("#border"),
   border_radio = document.querySelector("#border_radius"),
   editer = document.querySelector("#edite"),
-  pai = document.querySelector("#stopbutton");
+  pai = document.querySelector("#stopbutton"),
+  delet = document.querySelector("#delete");
 let select = null;
 let armaze = [];
 let inputObj = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "button"];
@@ -36,29 +37,32 @@ document.querySelector("#enter").addEventListener("click", function () {
       border_radio
     );
   }
-  // messagem("add scale");
 });
 
 function buttonCreate(name, typeObject) {
   document.querySelector(name).addEventListener("click", () => {
     if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
       create(typeObject);
-      onoffedita("1", "auto");
+      onoffedita("0", "none");
       return;
     }
   });
 }
 
 function logitaDelete2(arm) {
-  document.querySelector("#delete").addEventListener("click", function () {
+  delet.addEventListener("click", function () {
     if (select != null) {
       onoffedita("0", "none");
       select.remove();
       runlist = arm.indexOf(select);
       if (runlist !== -1) arm.splice(runlist, 1);
+      delet.style.background = "rgba(255, 0, 0, 0.75)";
       select = null;
     }
   });
+  setTimeout(() => {
+    delet.style.background = "rgb(252, 23, 35)";
+  }, 1500);
 }
 
 function nomeObject(
@@ -82,15 +86,12 @@ function nomeObject(
   object.style.height = charEspecial2(altura, "50px");
   object.style.width = charEspecial2(largura, "200px");
   object.style.borderRadius = charEspecial2(borderradio, "0");
-  object.style.fontSize = charEspecial2(fontsize, "10px");
+  object.style.fontSize = charEspecial2(fontsize, "");
 }
+
 function charEspecial2(object, value) {
-  let charP = object.value.match(
-    /^(\d+(px|em|rem|vh|vw|%)?|px|em|rem|vh|vw|%)$/
-  );
-  // console.log(charP);
-  if (!(object == "" && charP)) return object.value;
-  return (object.value = value);
+  let charP = object.value.match(/^(\d+(\.\d+)?)(|px|em|rem|vh|vw|%)$/);
+  return object == "" && charP ? (object.value = value) : object.value;
 }
 
 function create(html) {
@@ -115,18 +116,15 @@ function create(html) {
       armaze.push(object);
       console.log(armaze.length);
     }
-    if (onoff > 2) onoff = 0;
-    if (onoff == 2) {
+    if (onoff === 3) {
       onoffedita("1", "auto");
       object.style.outline = convertcolor(object);
       logitaDelete2(armaze);
       selectObject(object);
-      return;
+      return (onoff = 0);
     }
-    if (onoff <= 1) {
-      onoffedita("0", "none");
-      deselectObject();
-    }
+    onoffedita("0", "none");
+    deselectObject();
   });
   moveobject(object, onoff);
   armaze.forEach((el) => {
@@ -176,7 +174,6 @@ function convertcolor(object) {
   g = isNaN(g) ? 0 : g;
   b = isNaN(b) ? 0 : b;
   colorarm = "4px solid rgb(" + r + "," + g + "," + b + ")";
-  // console.log(colorarm);
   return colorarm;
 }
 function moveobject(object, onoff) {

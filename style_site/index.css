@@ -71,3 +71,8 @@ input::-webkit-outer-spin-button {
   background: rgb(252, 23, 35);
   border: none;
 }
+#delete:hover {
+  height: 30px;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px rgb(252, 23, 35);
+}
