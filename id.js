@@ -57,7 +57,6 @@ function logitaDelete2(arm) {
       runlist = arm.indexOf(select);
       if (runlist !== -1) arm.splice(runlist, 1);
       select = null;
-      console.log(arm);
     }
   });
 }
@@ -79,6 +78,7 @@ function nomeObject(
   object.textContent = name.value;
   if (background?.value) object.style.backgroundColor = background.value;
   if (Color?.value) object.style.color = Color.value;
+  object.style.border = borda.value;
   object.style.height = charEspecial2(altura, "50px");
   object.style.width = charEspecial2(largura, "200px");
   object.style.borderRadius = charEspecial2(borderradio, "0");
@@ -88,7 +88,7 @@ function charEspecial2(object, value) {
   let charP = object.value.match(
     /^(\d+(px|em|rem|vh|vw|%)?|px|em|rem|vh|vw|%)$/
   );
-  console.log(charP);
+  // console.log(charP);
   if (!(object == "" && charP)) return object.value;
   return (object.value = value);
 }
@@ -121,17 +121,19 @@ function create(html) {
       object.style.outline = convertcolor(object);
       logitaDelete2(armaze);
       selectObject(object);
-      armaze.forEach((el) => {
-        if (el != object) el.style.outline = "none";
-      });
       return;
     }
-    onoffedita("0", "none");
-    deselectObject();
+    if (onoff <= 1) {
+      onoffedita("0", "none");
+      deselectObject();
+    }
   });
   moveobject(object, onoff);
   armaze.forEach((el) => {
-    if (el !== object) el.style.outline = "none";
+    if (el != object) {
+      el.style.outline = "none";
+      el = onoffedita("0", "none");
+    }
   });
   pai.appendChild(object);
   return object;
@@ -160,6 +162,7 @@ function deselectObject() {
   select = null;
   armaze.forEach((el) => {
     el.style.outline = "none";
+    onoffedita("0", "none");
   });
 }
 
@@ -173,7 +176,7 @@ function convertcolor(object) {
   g = isNaN(g) ? 0 : g;
   b = isNaN(b) ? 0 : b;
   colorarm = "4px solid rgb(" + r + "," + g + "," + b + ")";
-  console.log(colorarm);
+  // console.log(colorarm);
   return colorarm;
 }
 function moveobject(object, onoff) {
@@ -231,7 +234,6 @@ function moveobject(object, onoff) {
 
 function messagem(erro) {
   let object = document.createElement("p");
-  // nomeObject(object, erro, "50px", "gray", "white", "300px", "100px", "", "0");
   nomeObject(object, erro, "50px", "gray", "white", "300px", "100px", "", "");
   console.log("entro aqui");
   pai.appendChild(object);

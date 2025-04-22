@@ -24,6 +24,7 @@ body {
   border: 3px solid lightseagreen;
   width: 750px;
   height: 500px;
+  user-select: none;
 }
 input,
 label {
@@ -34,12 +35,12 @@ label {
 input {
   border-radius: 5px;
   appearance: textfield;
-  -moz-appearance: textfield;
+  /* -moz-appearance: textfield; */
 }
-input::-webkit-inner-spin-button,
+/* input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button {
   -webkit-appearance: none;
-}
+} */
 #stopbutton {
   width: 100%;
   height: 100%;
