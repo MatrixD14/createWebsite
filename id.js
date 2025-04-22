@@ -13,17 +13,17 @@ let armaze = [];
 let inputObj = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "button"];
 screenName.value = "new type the object";
 frontSize.value = "";
-screenX.value = 200;
-screenY.value = 50;
+screenX.value = "200px";
+screenY.value = "50px";
 background.value = "gray";
 screenColor.value = "white";
-border.value = "none";
+border.value = "";
 border_radio.value = "0";
 inputObj.forEach((e) => {
   buttonCreate("#" + e, e);
 });
 document.querySelector("#enter").addEventListener("click", function () {
-  if (select) {
+  if (parseInt(screenX.value) > 0 && parseInt(screenY.value) && select) {
     nomeObject(
       select,
       screenName,
@@ -36,14 +36,14 @@ document.querySelector("#enter").addEventListener("click", function () {
       border_radio
     );
   }
+  // messagem("add scale");
 });
 
 function buttonCreate(name, typeObject) {
   document.querySelector(name).addEventListener("click", () => {
-    if (screenX.value > 0 && screenY.value > 0) {
+    if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
       create(typeObject);
       onoffedita("1", "auto");
-      messagem("add scale");
       return;
     }
   });
@@ -79,34 +79,18 @@ function nomeObject(
   object.textContent = name.value;
   if (background?.value) object.style.backgroundColor = background.value;
   if (Color?.value) object.style.color = Color.value;
-  if (!(largura?.value && largura.value > 0)) {
-    largura.value = 200;
-    object.style.width = largura.value + "px";
-    return;
-  }
-
-  if (!(altura?.value && altura.value > 0)) {
-    altura.value = 50;
-    object.style.height = altura.value + "px";
-    return;
-  }
-
-  if (!(fontsize?.value && fontsize.value > 0)) {
-    fontsize.value = "";
-    object.style.fontSize = fontsize.value;
-    return;
-  }
-  if (!(borderradio?.value && borderradio.value > 0)) {
-    borderradio.value = "0";
-    object.style.borderRadius = borderradio.value + "px";
-    return;
-  }
-
-  object.style.border = borda.value;
-  object.style.borderRadius = borderradio.value;
-  object.style.width = largura.value + "px";
-  object.style.height = altura.value + "px";
-  object.style.fontSize = fontsize.value + "px";
+  object.style.height = charEspecial2(altura, "50px");
+  object.style.width = charEspecial2(largura, "200px");
+  object.style.borderRadius = charEspecial2(borderradio, "0");
+  object.style.fontSize = charEspecial2(fontsize, "10px");
+}
+function charEspecial2(object, value) {
+  let charP = object.value.match(
+    /^(\d+(px|em|rem|vh|vw|%)?|px|em|rem|vh|vw|%)$/
+  );
+  console.log(charP);
+  if (!(object == "" && charP)) return object.value;
+  return (object.value = value);
 }
 
 function create(html) {
@@ -164,10 +148,11 @@ function selectObject(object) {
   screenColor.value = object.style.color;
   border.value = object.style.border;
   border_radio.value = object.style.borderRadius;
-  frontSize.value = parseInt(object.style.fontSize) || "";
-  if (screenX.value > 0 && screenY.value > 0) {
-    screenX.value = parseInt(object.style.width) || "";
-    screenY.value = parseInt(object.style.height) || "";
+  frontSize.value = object.style.fontSize;
+  if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
+    screenX.value = object.style.width;
+    screenY.value = object.style.height;
+    return;
   }
 }
 
@@ -246,7 +231,8 @@ function moveobject(object, onoff) {
 
 function messagem(erro) {
   let object = document.createElement("p");
-  // nomeObject(object, erro, "50px", "gray", "white", "300px", "100px");
+  // nomeObject(object, erro, "50px", "gray", "white", "300px", "100px", "", "0");
+  nomeObject(object, erro, "50px", "gray", "white", "300px", "100px", "", "");
   console.log("entro aqui");
   pai.appendChild(object);
   setTimeout(() => {
