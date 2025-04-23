@@ -1,4 +1,4 @@
-// import create from "./createObject.js";
+import entidade from "./Entidade.js";
 const screenX = document.querySelector("#valorx"),
   screenY = document.querySelector("#valory"),
   background = document.querySelector("#background"),
@@ -10,7 +10,7 @@ const screenX = document.querySelector("#valorx"),
   editer = document.querySelector("#edite"),
   pai = document.querySelector("#stopbutton"),
   delet = document.querySelector("#delete");
-const select = null;
+let select = null;
 const armaze = [];
 let inputObj = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "button"];
 screenName.value = "new type the object";
@@ -26,7 +26,18 @@ inputObj.forEach((e) => {
 });
 document.querySelector("#enter").addEventListener("click", function () {
   if (parseInt(screenX.value) > 0 && parseInt(screenY.value) && select) {
-    nomeObject(
+    // nomeObject(
+    //   select,
+    //   screenName,
+    //   frontSize,
+    //   background,
+    //   screenColor,
+    //   screenX,
+    //   screenY,
+    //   border,
+    //   border_radio
+    // );
+    entidade(
       select,
       screenName,
       frontSize,
@@ -63,30 +74,30 @@ function logitaDelete2(arm) {
   });
 }
 
-function nomeObject(
-  object,
-  name,
-  fontsize,
-  background,
-  Color,
-  largura,
-  altura,
-  borda,
-  borderradio
-) {
-  object.style.display = "flex";
-  object.style.justifyContent = "center";
-  object.style.alignItems = "center";
-  object.style.margin = "0";
-  object.textContent = name.value;
-  if (background?.value) object.style.backgroundColor = background.value;
-  if (Color?.value) object.style.color = Color.value;
-  object.style.border = borda.value;
-  object.style.height = charEspecial2(altura, "50px");
-  object.style.width = charEspecial2(largura, "200px");
-  object.style.borderRadius = charEspecial2(borderradio, "0");
-  object.style.fontSize = charEspecial2(fontsize, "");
-}
+// function nomeObject(
+//   object,
+//   name,
+//   fontsize,
+//   background,
+//   Color,
+//   largura,
+//   altura,
+//   borda,
+//   borderradio
+// ) {
+//   object.style.display = "flex";
+//   object.style.justifyContent = "center";
+//   object.style.alignItems = "center";
+//   object.style.margin = "0";
+//   object.textContent = name.value;
+//   if (background?.value) object.style.backgroundColor = background.value;
+//   if (Color?.value) object.style.color = Color.value;
+//   object.style.border = borda.value;
+//   object.style.height = charEspecial2(altura, "50px");
+//   object.style.width = charEspecial2(largura, "200px");
+//   object.style.borderRadius = charEspecial2(borderradio, "0");
+//   object.style.fontSize = charEspecial2(fontsize, "");
+// }
 function create(html) {
   let object = document.createElement(html);
   let onoff = 0;
@@ -132,10 +143,10 @@ function create(html) {
   return object;
 }
 
-function charEspecial2(object, value) {
-  let charP = object.value.match(/^(\d+(\.\d+)?)(|px|em|rem|vh|vw|%)$/);
-  return object == "" && charP ? (object.value = value) : object.value;
-}
+// function charEspecial2(object, value) {
+//   let charP = object.value.match(/^(\d+(\.\d+)?)(|px|em|rem|vh|vw|%)$/);
+//   return object == "" && charP ? (object.value = value) : object.value;
+// }
 
 function onoffedita(opacitys, pointEvent) {
   editer.style.opacity = opacitys;
