@@ -1,3 +1,4 @@
+import create from "./createObject.js";
 const screenX = document.querySelector("#valorx"),
   screenY = document.querySelector("#valory"),
   background = document.querySelector("#background"),
@@ -9,8 +10,8 @@ const screenX = document.querySelector("#valorx"),
   editer = document.querySelector("#edite"),
   pai = document.querySelector("#stopbutton"),
   delet = document.querySelector("#delete");
-let select = null;
-let armaze = [];
+export const select = null;
+export const armaze = [];
 let inputObj = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "button"];
 screenName.value = "new type the object";
 frontSize.value = "";
@@ -49,23 +50,20 @@ function buttonCreate(name, typeObject) {
   });
 }
 
-function logitaDelete2(arm) {
+export function logitaDelete2(arm) {
   delet.addEventListener("click", function () {
     if (select != null) {
       onoffedita("0", "none");
       select.remove();
+      delet.style.background = "rgba(255, 0, 0, 0.75)";
       runlist = arm.indexOf(select);
       if (runlist !== -1) arm.splice(runlist, 1);
-      delet.style.background = "rgba(255, 0, 0, 0.75)";
       select = null;
     }
   });
-  setTimeout(() => {
-    delet.style.background = "rgb(252, 23, 35)";
-  }, 1500);
 }
 
-function nomeObject(
+export function nomeObject(
   object,
   name,
   fontsize,
@@ -79,6 +77,7 @@ function nomeObject(
   object.style.display = "flex";
   object.style.justifyContent = "center";
   object.style.alignItems = "center";
+  object.style.margin = "0";
   object.textContent = name.value;
   if (background?.value) object.style.backgroundColor = background.value;
   if (Color?.value) object.style.color = Color.value;
@@ -94,55 +93,12 @@ function charEspecial2(object, value) {
   return object == "" && charP ? (object.value = value) : object.value;
 }
 
-function create(html) {
-  let object = document.createElement(html);
-  let onoff = 0;
-  nomeObject(
-    object,
-    screenName,
-    frontSize,
-    background,
-    screenColor,
-    screenX,
-    screenY,
-    border,
-    border_radio
-  );
-  object.addEventListener("click", function (e) {
-    e.stopPropagation();
-    select = object;
-    onoff++;
-    if (!armaze.includes(object)) {
-      armaze.push(object);
-      console.log(armaze.length);
-    }
-    if (onoff === 3) {
-      onoffedita("1", "auto");
-      object.style.outline = convertcolor(object);
-      logitaDelete2(armaze);
-      selectObject(object);
-      return (onoff = 0);
-    }
-    onoffedita("0", "none");
-    deselectObject();
-  });
-  moveobject(object, onoff);
-  armaze.forEach((el) => {
-    if (el != object) {
-      el.style.outline = "none";
-      el = onoffedita("0", "none");
-    }
-  });
-  pai.appendChild(object);
-  return object;
-}
-
-function onoffedita(opacitys, pointEvent) {
+export function onoffedita(opacitys, pointEvent) {
   editer.style.opacity = opacitys;
   editer.style.pointerEvents = pointEvent;
 }
 
-function selectObject(object) {
+export function selectObject(object) {
   screenName.value = object.textContent;
   background.value = object.style.backgroundColor;
   screenColor.value = object.style.color;
@@ -156,7 +112,7 @@ function selectObject(object) {
   }
 }
 
-function deselectObject() {
+export function deselectObject() {
   select = null;
   armaze.forEach((el) => {
     el.style.outline = "none";
@@ -164,7 +120,7 @@ function deselectObject() {
   });
 }
 
-function convertcolor(object) {
+export function convertcolor(object) {
   let mycolo = window.getComputedStyle(object).backgroundColor;
   let rgb = mycolo.match(/\d+/g);
   let r = 255 - parseInt(rgb[0]);
@@ -176,7 +132,7 @@ function convertcolor(object) {
   colorarm = "4px solid rgb(" + r + "," + g + "," + b + ")";
   return colorarm;
 }
-function moveobject(object, onoff) {
+export function moveobject(object, onoff) {
   if (!object) return;
   let eixoObjX = 0,
     eixoObjY = 0,
@@ -229,7 +185,7 @@ function moveobject(object, onoff) {
   object.addEventListener("touchstart", startmove, { passive: false });
 }
 
-function messagem(erro) {
+export function messagem(erro) {
   let object = document.createElement("p");
   nomeObject(object, erro, "50px", "gray", "white", "300px", "100px", "", "");
   console.log("entro aqui");
