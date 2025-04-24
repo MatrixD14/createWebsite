@@ -1,13 +1,17 @@
 body {
   user-select: none;
   flex-direction: row;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
   height: 100vh;
   background: black;
   color: white;
 }
+
 #stopbutton,
 body,
-.nolow {
+.nolow,
+.content {
   padding: 0;
   margin: 0;
   display: flex;
@@ -18,15 +22,13 @@ body,
   flex: 1 1 0%;
   text-align: center;
 }
-
-.alinha:nth-child(2) {
+.interface {
   flex: 4 1 0%;
 }
 #edite,
 #input {
-  flex-shrink: 0;
   margin: 0 5px 0 5px;
-  height: 505px;
+  height: 555px;
   padding: 5px;
   background: #161b22;
 }
@@ -45,7 +47,8 @@ body,
   align-items: center;
   text-align: center;
   font-size: 20px;
-  width: 200px;
+  width: 100%;
+  box-sizing: border-box;
 }
 #input input {
   background-color: #21262d;
@@ -58,8 +61,14 @@ body,
 }
 .nolow,
 #stopbutton {
-  width: 900px;
-  height: 550px;
+  width: 100%;
+  min-width: 800px;
+  height: 100%;
+  min-height: 600px;
+}
+#delete,
+#enter {
+  width: 80%;
 }
 #delete,
 #enter,
@@ -92,6 +101,28 @@ body,
   background: rgb(255, 0, 0, 0.75);
 }
 #input input:hover {
-  background-color: #2c313a;
   border: 2px solid #58a6ff;
+  background-color: #2c313a;
+}
+@media (max-width: 850px) {
+  .content {
+    /* align-items: center; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+  }
+
+  .interface {
+    order: 1;
+  }
+  .alinha:nth-child(1),
+  .alinha:nth-child(3) {
+    order: 2;
+    width: 48%;
+    margin: 1%;
+  }
+
+  .alinha {
+    width: 100%;
+  }
 }

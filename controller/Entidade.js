@@ -1,27 +1,4 @@
-export default class entidade {
-  constructor(
-    object,
-    name,
-    fontsize,
-    background,
-    Color,
-    largura,
-    altura,
-    borda,
-    borderradio
-  ) {
-    this.object = object;
-    this.name = name;
-    this.fontsize = fontsize;
-    this.background = background;
-    this.Color = Color;
-    this.largura = largura;
-    this.altura = altura;
-    this.borda = borda;
-    this.borderradio = borderradio;
-  }
-}
-function nomeObject(
+export function nomeObject(
   object,
   name,
   fontsize,

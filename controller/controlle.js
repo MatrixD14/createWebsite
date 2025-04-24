@@ -1,4 +1,6 @@
-import entidade from "./Entidade.js";
+import { nomeObject } from "./Entidade.js";
+import { moveobject } from "./moveObject.js";
+import { convertcolor } from "./conversocolor.js";
 const screenX = document.querySelector("#valorx"),
   screenY = document.querySelector("#valory"),
   background = document.querySelector("#background"),
@@ -10,7 +12,8 @@ const screenX = document.querySelector("#valorx"),
   editer = document.querySelector("#edite"),
   pai = document.querySelector("#stopbutton"),
   delet = document.querySelector("#delete");
-let select = null;
+export let select = null;
+// import select from "./controlle.js";
 const armaze = [];
 let inputObj = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "button"];
 screenName.value = "new type the object";
@@ -26,18 +29,7 @@ inputObj.forEach((e) => {
 });
 document.querySelector("#enter").addEventListener("click", function () {
   if (parseInt(screenX.value) > 0 && parseInt(screenY.value) && select) {
-    // nomeObject(
-    //   select,
-    //   screenName,
-    //   frontSize,
-    //   background,
-    //   screenColor,
-    //   screenX,
-    //   screenY,
-    //   border,
-    //   border_radio
-    // );
-    entidade(
+    nomeObject(
       select,
       screenName,
       frontSize,
@@ -61,13 +53,13 @@ function buttonCreate(name, typeObject) {
   });
 }
 
-function logitaDelete2(arm) {
+function Delete2(arm) {
   delet.addEventListener("click", function () {
     if (select != null) {
       onoffedita("0", "none");
       select.remove();
       delet.style.background = "rgba(255, 0, 0, 0.75)";
-      runlist = arm.indexOf(select);
+      let runlist = arm.indexOf(select);
       if (runlist !== -1) arm.splice(runlist, 1);
       select = null;
     }
@@ -101,7 +93,7 @@ function logitaDelete2(arm) {
 function create(html) {
   let object = document.createElement(html);
   let onoff = 0;
-  nomeObject(
+  new nomeObject(
     object,
     screenName,
     frontSize,
@@ -123,7 +115,7 @@ function create(html) {
     if (onoff === 3) {
       onoffedita("1", "auto");
       object.style.outline = convertcolor(object);
-      logitaDelete2(armaze);
+      Delete2(armaze);
       selectObject(object);
       delet.style.background = "rgb(252, 23, 35)";
       return (onoff = 0);
@@ -175,70 +167,70 @@ function deselectObject() {
   });
 }
 
-function convertcolor(object) {
-  let mycolo = window.getComputedStyle(object).backgroundColor;
-  let rgb = mycolo.match(/\d+/g);
-  let r = 255 - parseInt(rgb[0]);
-  let g = 255 - parseInt(rgb[1]);
-  let b = 255 - parseInt(rgb[2]);
-  r = isNaN(r) ? 0 : r;
-  g = isNaN(g) ? 0 : g;
-  b = isNaN(b) ? 0 : b;
-  colorarm = "4px solid rgb(" + r + "," + g + "," + b + ")";
-  return colorarm;
-}
-function moveobject(object, onoff) {
-  if (!object) return;
-  let eixoObjX = 0,
-    eixoObjY = 0,
-    onoffmove = false;
-  object.style.position = "absolute";
-  object.style.cursor = "grab";
-  function getClientXY(e) {
-    if (e.touches) {
-      return { xs: e.touches[0].clientX, ys: e.touches[0].clientY };
-    }
-    return { xs: e.clientX, ys: e.clientY };
-  }
-  function startmove(e) {
-    e.stopPropagation();
-    onoffmove = true;
-    let { xs, ys } = getClientXY(e);
-    let obj = object.getBoundingClientRect();
-    eixoObjX = xs - obj.left;
-    eixoObjY = ys - obj.top;
+// function convertcolor(object) {
+//   let mycolo = window.getComputedStyle(object).backgroundColor;
+//   let rgb = mycolo.match(/\d+/g);
+//   let r = 255 - parseInt(rgb[0]);
+//   let g = 255 - parseInt(rgb[1]);
+//   let b = 255 - parseInt(rgb[2]);
+//   r = isNaN(r) ? 0 : r;
+//   g = isNaN(g) ? 0 : g;
+//   b = isNaN(b) ? 0 : b;
+//   let colorarm = "4px solid rgb(" + r + "," + g + "," + b + ")";
+//   return colorarm;
+// }
+// function moveobject(object, onoff) {
+//   if (!object) return;
+//   let eixoObjX = 0,
+//     eixoObjY = 0,
+//     onoffmove = false;
+//   object.style.position = "absolute";
+//   object.style.cursor = "grab";
+//   function getClientXY(e) {
+//     if (e.touches) {
+//       return { xs: e.touches[0].clientX, ys: e.touches[0].clientY };
+//     }
+//     return { xs: e.clientX, ys: e.clientY };
+//   }
+//   function startmove(e) {
+//     e.stopPropagation();
+//     onoffmove = true;
+//     let { xs, ys } = getClientXY(e);
+//     let obj = object.getBoundingClientRect();
+//     eixoObjX = xs - obj.left;
+//     eixoObjY = ys - obj.top;
 
-    document.addEventListener("mouseup", offMove);
-    document.addEventListener("mousemove", onMove);
-    document.addEventListener("touchmove", onMove, { passive: false });
-    document.addEventListener("touchend", offMove);
-  }
+//     document.addEventListener("mouseup", offMove);
+//     document.addEventListener("mousemove", onMove);
+//     document.addEventListener("touchmove", onMove, { passive: false });
+//     document.addEventListener("touchend", offMove);
+//   }
 
-  function onMove(e) {
-    if (!onoffmove || onoff > 0) return;
-    e.preventDefault();
-    let { xs, ys } = getClientXY(e);
-    let pospai = pai.getBoundingClientRect();
-    let x = xs - pospai.left - eixoObjX,
-      y = ys - pospai.top - eixoObjY;
+//   function onMove(e) {
+//     if (!onoffmove || onoff > 0) return;
+//     e.preventDefault();
+//     let { xs, ys } = getClientXY(e);
+//     let pospai = pai.getBoundingClientRect();
+//     let x = xs - pospai.left - eixoObjX,
+//       y = ys - pospai.top - eixoObjY;
 
-    x = Math.max(0, Math.min(x, pai.offsetWidth - object.offsetWidth));
-    y = Math.max(0, Math.min(y, pai.offsetHeight - object.offsetHeight));
+//     x = Math.max(0, Math.min(x, pai.offsetWidth - object.offsetWidth));
+//     y = Math.max(0, Math.min(y, pai.offsetHeight - object.offsetHeight));
 
-    object.style.left = x + "px";
-    object.style.top = y + "px";
-  }
+//     object.style.left = x + "px";
+//     object.style.top = y + "px";
+//   }
 
-  function offMove() {
-    onoffmove = false;
-    document.removeEventListener("mousemove", onMove);
-    document.removeEventListener("mouseup", offMove);
-    document.removeEventListener("touchmove", onMove);
-    document.removeEventListener("touchend", offMove);
-  }
-  object.addEventListener("mousedown", startmove);
-  object.addEventListener("touchstart", startmove, { passive: false });
-}
+//   function offMove() {
+//     onoffmove = false;
+//     document.removeEventListener("mousemove", onMove);
+//     document.removeEventListener("mouseup", offMove);
+//     document.removeEventListener("touchmove", onMove);
+//     document.removeEventListener("touchend", offMove);
+//   }
+//   object.addEventListener("mousedown", startmove);
+//   object.addEventListener("touchstart", startmove, { passive: false });
+// }
 
 function messagem(erro) {
   let object = document.createElement("p");
