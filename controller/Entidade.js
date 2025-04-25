@@ -1,3 +1,5 @@
+import { fromattext } from "./fromatText.js";
+
 export function caracteristica(
   object,
   name,
@@ -13,7 +15,7 @@ export function caracteristica(
   object.style.justifyContent = "center";
   object.style.alignItems = "center";
   object.style.margin = "0";
-  object.textContent = name.value;
+  object.innerHTML = fromattext(name.value);
   if (background?.value) object.style.backgroundColor = background.value;
   if (Color?.value) object.style.color = Color.value;
   object.style.border = borda.value === "none" ? "none" : borda.value;

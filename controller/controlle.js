@@ -13,9 +13,9 @@ import {
   border_radio,
   select,
   armaze,
-  armazepos,
 } from "./variavels.js";
-screenName.value = "new type the object";
+import { fromattext } from "./fromatText.js";
+screenName.value = fromattext("new type the object");
 frontSize.value = "";
 screenX.value = "200px";
 screenY.value = "50px";
@@ -27,7 +27,6 @@ border_radio.value = "0";
 inputObj.forEach((e) => {
   buttonCreate("#" + e, e);
 });
-console.log(armazepos);
 document.querySelector("#enter").addEventListener("click", function () {
   if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
     if (select.selet !== null) {
