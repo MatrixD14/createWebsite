@@ -8,15 +8,7 @@ export const screenX = document.querySelector("#valorx"),
   border_radio = document.querySelector("#border_radius"),
   pai = document.querySelector("#stopbutton"),
   editer = document.querySelector("#edite"),
-  delet = document.querySelector("#delete");
-export const inputObj = [
-  "p",
-  "div",
-  "h1",
-  "h2",
-  "h3",
-  "h4",
-  "h5",
-  "h6",
-  "button",
-];
+  delet = document.querySelector("#delete"),
+  inputObj = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "button"],
+  select = { selet: null },
+  armaze = { armaz: [] };

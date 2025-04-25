@@ -8,7 +8,7 @@ import {
   border,
   border_radio,
 } from "./variavels.js";
-import { onoffedita } from "./delete.js";
+import { onoffedita } from "./deleteEdite.js";
 export function selectObject(object) {
   screenName.value = object.textContent;
   background.value = object.style.backgroundColor;

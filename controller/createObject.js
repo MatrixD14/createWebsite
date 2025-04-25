@@ -1,7 +1,7 @@
-import { nomeObject } from "./Entidade.js";
+import { caracteristica } from "./Entidade.js";
 import { moveobject } from "./moveObject.js";
 import { convertcolor } from "./conversocolor.js";
-import { Delete2, onoffedita } from "./delete.js";
+import { Delete2, onoffedita } from "./deleteEdite.js";
 import { selectObject, deselectObject } from "./selectObject.js";
 import {
   screenName,
@@ -14,11 +14,12 @@ import {
   border_radio,
   pai,
   delet,
+  select,
 } from "./variavels.js";
-export function create(html, armaze, select) {
+export function create(html, armaze, selects) {
   let object = document.createElement(html);
   let onoff = 0;
-  new nomeObject(
+  caracteristica(
     object,
     screenName,
     frontSize,
@@ -31,7 +32,7 @@ export function create(html, armaze, select) {
   );
   object.addEventListener("click", function (e) {
     e.stopPropagation();
-    select = object;
+    select.selet = object;
     onoff++;
     if (!armaze.includes(object)) {
       armaze.push(object);
@@ -40,14 +41,14 @@ export function create(html, armaze, select) {
     if (onoff === 3) {
       onoffedita("1", "auto");
       object.style.outline = convertcolor(object);
-      Delete2(armaze, select);
+      Delete2(armaze, selects);
       selectObject(object);
       delet.style.background = "rgb(252, 23, 35)";
       return (onoff = 0);
     }
     delet.style.background = "rgba(255, 0, 0, 0.75)";
     onoffedita("0", "none");
-    deselectObject(armaze, select);
+    deselectObject(armaze, selects);
   });
   moveobject(object, onoff);
   armaze.forEach((el) => {

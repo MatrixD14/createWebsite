@@ -1,4 +1,4 @@
-export function nomeObject(
+export function caracteristica(
   object,
   name,
   fontsize,
@@ -23,6 +23,7 @@ export function nomeObject(
   object.style.fontSize = charEspecial2(fontsize, "");
 }
 function charEspecial2(object, value) {
-  let charP = object.value.match(/^(\d+(\.\d+)?)(|px|em|rem|vh|vw|%)$/);
-  return object == "" && charP ? (object.value = value) : object.value;
+  let valor = object?.value || "",
+    charP = valor.match(/^(\d+(\.\d+)?)(|px|em|rem|vh|vw|%)$/);
+  return charP ? valor : value;
 }
