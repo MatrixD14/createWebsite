@@ -1,0 +1,13 @@
+export const screenX = document.querySelector("#valorx"),
+  screenY = document.querySelector("#valory"),
+  background = document.querySelector("#background"),
+  frontSize = document.querySelector("#font_size"),
+  screenColor = document.querySelector("#Color"),
+  screenName = document.querySelector("#name"),
+  border = document.querySelector("#border"),
+  border_radio = document.querySelector("#border_radius"),
+  pai = document.querySelector("#stopbutton"),
+  editer = document.querySelector("#edite"),
+  delet = document.querySelector("#delete");
+export let armaze = [],
+  inputObj = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "button"];
