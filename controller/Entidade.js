@@ -16,7 +16,7 @@ export function caracteristica(
   object.textContent = name.value;
   if (background?.value) object.style.backgroundColor = background.value;
   if (Color?.value) object.style.color = Color.value;
-  object.style.border = borda.value;
+  object.style.border = borda.value === "none" ? "none" : borda.value;
   object.style.height = charEspecial2(altura, "50px");
   object.style.width = charEspecial2(largura, "200px");
   object.style.borderRadius = charEspecial2(borderradio, "0");

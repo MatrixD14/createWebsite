@@ -1,9 +1,10 @@
+import { dados } from "./status.js";
+import { pai, armazepos } from "./variavels.js";
 export function moveobject(object, onoff) {
   if (!object) return;
   let eixoObjX = 0,
     eixoObjY = 0,
-    onoffmove = false,
-    pai = document.querySelector("#stopbutton");
+    onoffmove = false;
   object.style.position = "absolute";
   object.style.cursor = "grab";
   function getClientXY(e) {
@@ -36,9 +37,11 @@ export function moveobject(object, onoff) {
 
     x = Math.max(0, Math.min(x, pai.offsetWidth - object.offsetWidth));
     y = Math.max(0, Math.min(y, pai.offsetHeight - object.offsetHeight));
-
+    armazepos.x = Math.round(x, 2);
+    armazepos.y = Math.round(y, 2);
     object.style.left = x + "px";
     object.style.top = y + "px";
+    dados();
   }
 
   function offMove() {

@@ -13,6 +13,7 @@ import {
   border_radio,
   select,
   armaze,
+  armazepos,
 } from "./variavels.js";
 screenName.value = "new type the object";
 frontSize.value = "";
@@ -20,15 +21,15 @@ screenX.value = "200px";
 screenY.value = "50px";
 background.value = "gray";
 screenColor.value = "white";
-border.value = "";
+border.value = "none";
 border_radio.value = "0";
 
 inputObj.forEach((e) => {
   buttonCreate("#" + e, e);
 });
-
+console.log(armazepos);
 document.querySelector("#enter").addEventListener("click", function () {
-  if (parseInt(screenX.value) > 0 && parseInt(screenY.value)) {
+  if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
     if (select.selet !== null) {
       caracteristica(
         select.selet,
@@ -42,7 +43,6 @@ document.querySelector("#enter").addEventListener("click", function () {
         border_radio
       );
     } else {
-      console.log("nao entro");
     }
   }
 });
@@ -50,9 +50,10 @@ document.querySelector("#enter").addEventListener("click", function () {
 function buttonCreate(name, typeObject) {
   document.querySelector(name).addEventListener("click", () => {
     if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
-      create(typeObject, armaze.armaz, select.selet);
+      create(typeObject, armaze, select);
       onoffedita("0", "none");
       return;
     }
+    console.log("nao entro");
   });
 }

@@ -23,8 +23,8 @@ export function selectObject(object) {
   }
 }
 export function deselectObject(arm, select) {
-  select = null;
-  arm.forEach((el) => {
+  select.select = null;
+  arm.armaz.forEach((el) => {
     el.style.outline = "none";
     onoffedita("0", "none");
   });

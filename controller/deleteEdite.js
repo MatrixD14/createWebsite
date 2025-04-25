@@ -1,13 +1,17 @@
+import { dados } from "./status.js";
 import { editer, delet } from "./variavels.js";
-export function Delete2(arm, select) {
+export function Delete2(arm, selects) {
   delet.addEventListener("click", function () {
-    if (select != null) {
+    if (selects.selet != null) {
       onoffedita("0", "none");
-      select.remove();
+      selects.selet.remove();
       delet.style.background = "rgba(255, 0, 0, 0.75)";
-      let runlist = arm.indexOf(select);
-      if (runlist !== -1) arm.splice(runlist, 1);
-      select = null;
+      let runlist = arm.armaz.indexOf(selects.selet);
+      if (runlist !== -1) {
+        arm.armaz.splice(runlist, 1);
+        dados();
+      }
+      selects.selet = null;
     }
   });
 }

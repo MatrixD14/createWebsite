@@ -14,9 +14,9 @@ import {
   border_radio,
   pai,
   delet,
-  select,
 } from "./variavels.js";
-export function create(html, armaze, selects) {
+import { dados } from "./status.js";
+export function create(html, armaz, select) {
   let object = document.createElement(html);
   let onoff = 0;
   caracteristica(
@@ -30,29 +30,33 @@ export function create(html, armaze, selects) {
     border,
     border_radio
   );
+
+  if (!armaz.armaz.includes(object)) {
+    armaz.armaz.push(object);
+    dados();
+    console.log(armaz.armaz.length);
+  }
   object.addEventListener("click", function (e) {
     e.stopPropagation();
     select.selet = object;
     onoff++;
-    if (!armaze.includes(object)) {
-      armaze.push(object);
-      console.log(armaze.length);
-    }
+
     if (onoff === 3) {
       onoffedita("1", "auto");
       object.style.outline = convertcolor(object);
-      Delete2(armaze, selects);
+      Delete2(armaz, select);
       selectObject(object);
       delet.style.background = "rgb(252, 23, 35)";
       return (onoff = 0);
     }
     delet.style.background = "rgba(255, 0, 0, 0.75)";
     onoffedita("0", "none");
-    deselectObject(armaze, selects);
+    deselectObject(armaz, select);
   });
   moveobject(object, onoff);
-  armaze.forEach((el) => {
+  armaz.armaz.forEach((el) => {
     if (el != object) {
+      console.log("limpo");
       el.style.outline = "none";
       el = onoffedita("0", "none");
     }

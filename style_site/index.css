@@ -2,7 +2,7 @@ body {
   user-select: none;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 100vh;
+  height: 100%;
   background: black;
   color: white;
 }
@@ -10,7 +10,8 @@ body {
 #stopbutton,
 body,
 .nolow,
-.content {
+.content,
+#status {
   padding: 0;
   margin: 0;
   display: flex;
@@ -33,7 +34,8 @@ body,
 }
 #edite,
 #input,
-#stopbutton {
+#stopbutton,
+#status {
   overflow: auto;
   border: 3px solid #30363d;
 }
@@ -62,8 +64,9 @@ body,
 #stopbutton {
   width: 100%;
   min-width: 800px;
-  height: 100%;
   min-height: 600px;
+  height: auto;
+  box-sizing: border-box;
 }
 #delete,
 #enter {
@@ -102,6 +105,12 @@ body,
 #input input:hover {
   border: 2px solid #58a6ff;
   background-color: #2c313a;
+}
+#status {
+  background: white;
+  color: black;
+  width: 99.25%;
+  height: 25px;
 }
 @media (max-width: 850px) {
   .content {
