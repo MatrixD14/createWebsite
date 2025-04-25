@@ -1,5 +1,5 @@
 import { nomeObject } from "./Entidade";
-let pai = document.querySelector("#stopbutton");
+import { pai } from "./variavels.js";
 export function messagem(erro) {
   let object = document.createElement("p");
   nomeObject(object, erro, "50px", "gray", "white", "300px", "100px", "", "");

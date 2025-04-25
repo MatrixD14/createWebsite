@@ -9,5 +9,14 @@ export const screenX = document.querySelector("#valorx"),
   pai = document.querySelector("#stopbutton"),
   editer = document.querySelector("#edite"),
   delet = document.querySelector("#delete");
-export let armaze = [],
-  inputObj = ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6", "button"];
+export const inputObj = [
+  "p",
+  "div",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "button",
+];

@@ -7,7 +7,6 @@ import {
   screenY,
   border,
   border_radio,
-  armaze,
 } from "./variavels.js";
 import { onoffedita } from "./delete.js";
 export function selectObject(object) {
@@ -23,10 +22,9 @@ export function selectObject(object) {
     return;
   }
 }
-
-export function deselectObject(select) {
+export function deselectObject(arm, select) {
   select = null;
-  armaze.forEach((el) => {
+  arm.forEach((el) => {
     el.style.outline = "none";
     onoffedita("0", "none");
   });
