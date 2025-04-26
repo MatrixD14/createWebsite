@@ -11,7 +11,6 @@ body {
 body,
 .nolow,
 .content,
-/* #status, */
 #dadosObject {
   padding: 0;
   margin: 0;
@@ -29,7 +28,7 @@ body,
 #edite,
 #input {
   margin: 0 5px 0 5px;
-  height: 555px;
+  height: 510px;
   padding: 5px;
   background: #161b22;
 }
@@ -96,7 +95,8 @@ body,
   border: 2px solid white;
   box-shadow: 0 0 0 2px rgb(252, 23, 35);
 }
-#enter:hover {
+#enter:hover,
+#barPesquisa:hover {
   border: 2px solid rgb(74, 255, 107);
   box-shadow: 0 0 0 2px rgb(255, 255, 255);
 }

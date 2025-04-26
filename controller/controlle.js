@@ -1,6 +1,7 @@
 import { caracteristica } from "./Entidade.js";
 import { onoffedita } from "./deleteEdite.js";
 import { create } from "./createObject.js";
+import { inputcreateObject, inputcreateObjectSpecific } from "./createInput.js";
 import {
   inputObj,
   screenName,
@@ -13,6 +14,7 @@ import {
   border_radio,
   select,
   armaze,
+  inputSpecific,
 } from "./variavels.js";
 import { fromattext } from "./fromatText.js";
 screenName.value = fromattext("new type the object");
@@ -25,6 +27,11 @@ border.value = "none";
 border_radio.value = "0";
 
 inputObj.forEach((e) => {
+  inputcreateObject(e);
+  buttonCreate("#" + e, e);
+});
+inputSpecific.forEach((e) => {
+  inputcreateObjectSpecific(e);
   buttonCreate("#" + e, e);
 });
 document.querySelector("#enter").addEventListener("click", function () {
