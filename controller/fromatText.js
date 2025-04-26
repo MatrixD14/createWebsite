@@ -8,9 +8,8 @@ export function fromattext(text) {
   });
 
   formatOneTag.forEach((tag) => {
-    let criatag = new RegExp(`\\/s*${tag}(?!\\s*\\{)`, "g");
+    let criatag = new RegExp(`\\/s*${tag}(?!\\s*\\[)`, "gi");
     text = text.replace(criatag, `<${tag}>&nbsp;`);
   });
   return text;
 }
-//(?!\\s*\\{)

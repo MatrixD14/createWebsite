@@ -16,8 +16,7 @@ import {
   armaze,
   inputSpecific,
 } from "./variavels.js";
-import { fromattext } from "./fromatText.js";
-screenName.value = fromattext("new type the object");
+screenName.value = "new type the object";
 frontSize.value = "";
 screenX.value = "200px";
 screenY.value = "50px";
