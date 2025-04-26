@@ -9,9 +9,8 @@ import {
   border_radio,
 } from "./variavels.js";
 import { onoffedita } from "./deleteEdite.js";
-import { fromattext } from "./fromatText.js";
 export function selectObject(object) {
-  screenName.value = fromattext(object.textContent);
+  screenName.value = object.dataset.original || object.innerHTML;
   background.value = object.style.backgroundColor;
   screenColor.value = object.style.color;
   border.value = object.style.border;

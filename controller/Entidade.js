@@ -16,6 +16,7 @@ export function caracteristica(
   object.style.alignItems = "center";
   object.style.margin = "0";
   object.innerHTML = fromattext(name.value);
+  object.dataset.original = name.value;
   if (background?.value) object.style.backgroundColor = background.value;
   if (Color?.value) object.style.color = Color.value;
   object.style.border = borda.value === "none" ? "none" : borda.value;
