@@ -133,6 +133,12 @@ body,
   cursor: pointer;
   font-size: 12px;
 }
+#barPesquisa {
+  text-align: center;
+  font-size: 15px;
+  width: 90%;
+  margin: 1%;
+}
 @media (max-width: 850px) {
   .content {
     flex-direction: row;
@@ -148,7 +154,10 @@ body,
     width: 48%;
     margin: 1%;
   }
-
+  #barPesquisa {
+    width: 90%;
+    margin: 1%;
+  }
   .alinha {
     width: 100%;
   }

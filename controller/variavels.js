@@ -11,6 +11,7 @@ export const screenX = document.querySelector("#valorx"),
   delet = document.querySelector("#delete"),
   status = document.querySelector("#status"),
   inputcreate = document.querySelector("#input"),
+  pesquisa = document.querySelector("#barPesquisa"),
   inputObj = [
     "p",
     "div",

@@ -2,6 +2,7 @@ import { caracteristica } from "./Entidade.js";
 import { onoffedita } from "./deleteEdite.js";
 import { create } from "./createObject.js";
 import { inputcreateObject, inputcreateObjectSpecific } from "./createInput.js";
+import { pesquisatag } from "./pesquisatag.js";
 import {
   inputObj,
   screenName,
@@ -33,6 +34,7 @@ inputSpecific.forEach((e) => {
   inputcreateObjectSpecific(e);
   buttonCreate("#" + e, e);
 });
+pesquisatag();
 document.querySelector("#enter").addEventListener("click", function () {
   if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
     if (select.selet !== null) {

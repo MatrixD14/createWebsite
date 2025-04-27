@@ -30,7 +30,6 @@ export function create(html, armaz, select) {
     border,
     border_radio
   );
-
   if (!armaz.armaz.includes(object)) {
     armaz.armaz.push(object);
     dados();
@@ -56,7 +55,6 @@ export function create(html, armaz, select) {
   moveobject(object, onoff);
   armaz.armaz.forEach((el) => {
     if (el != object) {
-      console.log("limpo");
       el.style.outline = "none";
       el = onoffedita("0", "none");
     }

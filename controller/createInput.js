@@ -6,6 +6,7 @@ export function inputcreateObject(object) {
   inputCreateObj.name = object;
   inputCreateObj.value = object;
   inputCreateObj.id = object;
+  inputCreateObj.classList.add("tag");
   inputcreate.appendChild(inputCreateObj);
 }
 export function inputcreateObjectSpecific(object) {
@@ -14,5 +15,6 @@ export function inputcreateObjectSpecific(object) {
   inputCreateObjsSpecific.name = object;
   inputCreateObjsSpecific.value = object;
   inputCreateObjsSpecific.id = object;
+  inputCreateObjsSpecific.classList.add("tag");
   inputcreate.appendChild(inputCreateObjsSpecific);
 }
