@@ -8,15 +8,8 @@ body {
 }
 
 #stopbutton,
-body,
-.nolow,
-.content,
-#dadosObject {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.nolow {
+  display: block;
 }
 #editotxt,
 .editotexto {
@@ -27,8 +20,21 @@ body,
 #editotxt {
   display: none;
 }
-#editetxt {
+#editetxt,
+body,
+.content,
+#dadosObject {
   display: flex;
+}
+#editetxt,
+body,
+.nolow,
+.content,
+#editotxt,
+#dadosObject,
+#stopbutton {
+  padding: 0;
+  margin: 0;
   justify-content: center;
   align-items: center;
 }
@@ -48,10 +54,12 @@ body,
 }
 #edite,
 #input,
-#stopbutton,
+#stopbutton {
+  overflow: auto;
+  border: 3px solid #30363d;
+}
 #status,
 #dadosObject {
-  overflow: auto;
   border: 3px solid #30363d;
 }
 #edite input,

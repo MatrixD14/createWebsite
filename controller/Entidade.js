@@ -11,7 +11,7 @@ export function caracteristica(
   borda,
   borderradio
 ) {
-  object.style.display = "flex";
+  //object.style.display = "flex";
   object.style.justifyContent = "center";
   object.style.alignItems = "center";
   object.style.margin = "0";

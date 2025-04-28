@@ -29,7 +29,7 @@ screenName2.addEventListener("input", () => {
 });
 frontSize.value = "";
 screenX.value = "200px";
-screenY.value = "50px";
+screenY.value = "40px";
 background.value = "gray";
 screenColor.value = "white";
 border.value = "none";
