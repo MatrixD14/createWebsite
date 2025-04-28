@@ -4,7 +4,7 @@ import { convertcolor } from "./conversocolor.js";
 import { Delete2, onoffedita } from "./deleteEdite.js";
 import { selectObject, deselectObject } from "./selectObject.js";
 import {
-  screenName,
+  screenName1,
   frontSize,
   background,
   screenColor,
@@ -21,7 +21,7 @@ export function create(html, armaz, select) {
   let onoff = 0;
   caracteristica(
     object,
-    screenName,
+    screenName1,
     frontSize,
     background,
     screenColor,

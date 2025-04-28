@@ -1,5 +1,6 @@
 import {
-  screenName,
+  screenName1,
+  screenName2,
   frontSize,
   background,
   screenColor,
@@ -10,7 +11,7 @@ import {
 } from "./variavels.js";
 import { onoffedita } from "./deleteEdite.js";
 export function selectObject(object) {
-  screenName.value = object.dataset.original || object.innerHTML;
+  screenName1.value = object.dataset.original || object.innerHTML;
   background.value = object.style.backgroundColor;
   screenColor.value = object.style.color;
   border.value = object.style.border;

@@ -6,7 +6,8 @@ import { pesquisatag } from "./pesquisatag.js";
 import { onoffEditetxt } from "./editortxt.js";
 import {
   inputObj,
-  screenName,
+  screenName1,
+  screenName2,
   frontSize,
   background,
   screenColor,
@@ -18,7 +19,14 @@ import {
   armaze,
   inputSpecific,
 } from "./variavels.js";
-screenName.value = "new type the object";
+screenName1.value = "name objetc";
+screenName2.value = screenName1.value;
+screenName1.addEventListener("input", () => {
+  screenName2.value = screenName1.value;
+});
+screenName2.addEventListener("input", () => {
+  screenName1.value = screenName2.value;
+});
 frontSize.value = "";
 screenX.value = "200px";
 screenY.value = "50px";
@@ -42,7 +50,7 @@ document.querySelector("#enter").addEventListener("click", function () {
     if (select.selet !== null) {
       caracteristica(
         select.selet,
-        screenName,
+        screenName1,
         frontSize,
         background,
         screenColor,
