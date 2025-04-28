@@ -18,6 +18,20 @@ body,
   justify-content: center;
   align-items: center;
 }
+#editotxt,
+.editotexto {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+}
+#editotxt {
+  display: none;
+}
+#editetxt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .alinha {
   flex: 1 1 0%;
   text-align: center;
@@ -84,25 +98,39 @@ body,
 }
 #delete:hover,
 #enter:hover,
-#input input:hover {
+#input input:hover,
+.activetxt:hover {
   height: 30px;
   cursor: pointer;
   font-size: 18px;
 }
+.desenabled:hover {
+  height: 33px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 6px;
+}
+.desenabled {
+  margin: 6px;
+}
 #delete:hover,
 #start:hover,
-#salve:hover {
+#salve:hover,
+.desenabled:hover {
   border: 2px solid white;
   box-shadow: 0 0 0 2px rgb(252, 23, 35);
 }
 #enter:hover,
-#barPesquisa:hover {
+#barPesquisa:hover,
+.activetxt:hover {
   border: 2px solid rgb(74, 255, 107);
   box-shadow: 0 0 0 2px rgb(255, 255, 255);
 }
 #enter,
 #start,
-#salve {
+#salve,
+.desenabled,
+.activetxt {
   color: black;
   background: rgb(255, 255, 255);
 }
@@ -126,6 +154,14 @@ body,
 #salve {
   margin: 0 2px 0 2px;
   width: 90px;
+}
+.activetxt {
+  flex: 1;
+  min-width: 30px;
+}
+
+.txt {
+  margin: 0 5px;
 }
 #start:hover,
 #salve:hover {

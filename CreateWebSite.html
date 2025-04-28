@@ -29,9 +29,16 @@
 
       <div class="alinha">
         <div id="edite">
+          <div id="editotxt">
+            <input type="button" class="desenabled" value="exit">
+            <textarea id="name" class="editotexto"></textarea>
+          </div>
+          <div id="menuStatus">
           <label for="name">Name:</label>
-          <input type="text" name="name" id="name" />
-          <!-- <textarea name="name" id="name"></textarea> -->
+          <div id="editetxt">  
+            <input type="text" name="name" id="name" class="txt"/>
+            <input type="button" name="name" class="activetxt" value=" ! ">
+          </div>
           <label for="valorx">Width:</label>
           <input type="text" name="valorx" id="valorx" />
           <label for="valory">Height:</label>
@@ -46,6 +53,7 @@
           <input type="text" name="border" id="border" />
           <label for="border_radius">Border-radius:</label>
           <input type="text" name="border_radius" id="border_radius" />
+        </div>
         </div>
         <input type="button" name="enter" id="enter" value="Enter" />
       </div>
