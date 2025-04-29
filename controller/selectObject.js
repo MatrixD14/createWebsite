@@ -1,6 +1,5 @@
 import {
   screenName1,
-  screenName2,
   frontSize,
   background,
   screenColor,

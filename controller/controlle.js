@@ -4,6 +4,7 @@ import { create } from "./createObject.js";
 import { inputcreateObject, inputcreateObjectSpecific } from "./createInput.js";
 import { pesquisatag } from "./pesquisatag.js";
 import { onoffEditetxt } from "./editortxt.js";
+import { startSite } from "../editortext/StartSite.js";
 import {
   inputObj,
   screenName1,
@@ -21,15 +22,9 @@ import {
 } from "./variavels.js";
 screenName1.value = "name objetc";
 screenName2.value = screenName1.value;
-screenName1.addEventListener("input", () => {
-  screenName2.value = screenName1.value;
-});
-screenName2.addEventListener("input", () => {
-  screenName1.value = screenName2.value;
-});
 frontSize.value = "";
 screenX.value = "200px";
-screenY.value = "40px";
+screenY.value = "50px";
 background.value = "gray";
 screenColor.value = "white";
 border.value = "none";
@@ -45,6 +40,7 @@ inputSpecific.forEach((e) => {
 });
 pesquisatag();
 onoffEditetxt();
+startSite();
 document.querySelector("#enter").addEventListener("click", function () {
   if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
     if (select.selet !== null) {

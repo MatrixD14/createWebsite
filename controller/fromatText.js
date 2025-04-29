@@ -7,13 +7,13 @@ export function fromattext(text) {
       let criatag = new RegExp(`\\{([^{}]+?)\\}\\s*${tag}(?!\\s*\\[)`, "gis");
       text = text.replace(criatag, (_, conteudo) => {
         specionemudansa = true;
-        return `&nbsp;<${tag}>${conteudo}</${tag}>&nbsp;`;
+        return `<${tag}>${conteudo}</${tag}>`;
       });
     });
   } while (specionemudansa);
   formatOneTag.forEach((tag) => {
     let criatag = new RegExp(`\\/s*${tag}(?!\\s*\\[)`, "gi");
-    text = text.replace(criatag, `<${tag}>&nbsp;`);
+    text = text.replace(criatag, `<${tag}>`);
   });
   return text;
 }

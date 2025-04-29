@@ -13,7 +13,7 @@ export function messagem(erro) {
   object.style.width = "200px";
   object.style.fontSize = "20px";
   console.log("entro aqui");
-  pai.appendChild(object);
+  pai.children[0].appendChild(object);
   setTimeout(() => {
     object.remove();
   }, 2000);

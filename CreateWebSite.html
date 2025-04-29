@@ -4,56 +4,62 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style_site/index.css" />
-    <title>move</title>
+    <title>Engine the Site</title>
   </head>
   <body>
-    <divn class="content">
+    <div class="content">
       <div class="alinha">
         <div>
-          <input type="search" name="barPesquisa" id="barPesquisa" placeholder="pesquisa tag">
+          <input
+            type="search"
+            name="barPesquisa"
+            id="barPesquisa"
+            placeholder="pesquisa tag" />
           <div id="input"></div>
         </div>
         <input type="button" name="delete" id="delete" value="delete" />
       </div>
-      
-            <div class="alinha interface">
-              <div id="dadosObject">
-              <div id="status"></div>
-                <input type="submit" value="start" name="start" id="start">
-                <input type="submit" value="salve" name="salve" id="salve">
-              </div>
-              <div class="nolow">
-                <div id="stopbutton"></div>
-              </div>
-            </div>
+
+      <div class="alinha interface">
+        <div id="dadosObject">
+          <div id="status"></div>
+          <input type="submit" value="export" name="export" id="export" />
+          <label for="imports" id="import">import</label>
+          <input type="file" name="imports" id="imports" />
+          <input type="submit" value="start" name="start" id="start" />
+        </div>
+        <div class="nolow">
+          <div id="stopbutton"></div>
+        </div>
+      </div>
 
       <div class="alinha">
         <div id="edite">
           <div id="editotxt">
-            <input type="button" class="desenabled" value="exit">
+            <input type="button" class="desenabled" value="exit" />
             <textarea id="name1" class="editotexto"></textarea>
           </div>
           <div id="menuStatus">
-          <label for="name">Name:</label>
-          <div id="editetxt">  
-            <input type="text" name="name" id="name2" class="txt"/>
-            <input type="button" name="name" class="activetxt" value=" ! ">
+            <label for="name">Name:</label>
+            <div id="editetxt">
+              <input type="text" name="name" id="name2" class="txt" />
+              <input type="button" name="name" class="activetxt" value=" ! " />
+            </div>
+            <label for="valorx">Width:</label>
+            <input type="text" name="valorx" id="valorx" />
+            <label for="valory">Height:</label>
+            <input type="text" name="valory" id="valory" />
+            <label for="font_size">Font-size:</label>
+            <input type="text" name="font_size" id="font_size" />
+            <label for="Color">Color:</label>
+            <input type="text" name="Color" id="Color" />
+            <label for="background">Background:</label>
+            <input type="text" name="background" id="background" />
+            <label for="border">Border:</label>
+            <input type="text" name="border" id="border" />
+            <label for="border_radius">Border-radius:</label>
+            <input type="text" name="border_radius" id="border_radius" />
           </div>
-          <label for="valorx">Width:</label>
-          <input type="text" name="valorx" id="valorx" />
-          <label for="valory">Height:</label>
-          <input type="text" name="valory" id="valory" />
-          <label for="font_size">Font-size:</label>
-          <input type="text" name="font_size" id="font_size" />
-          <label for="Color">Color:</label>
-          <input type="text" name="Color" id="Color" />
-          <label for="background">Background:</label>
-          <input type="text" name="background" id="background" />
-          <label for="border">Border:</label>
-          <input type="text" name="border" id="border" />
-          <label for="border_radius">Border-radius:</label>
-          <input type="text" name="border_radius" id="border_radius" />
-        </div>
         </div>
         <input type="button" name="enter" id="enter" value="Enter" />
       </div>

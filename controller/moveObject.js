@@ -31,12 +31,18 @@ export function moveobject(object, onoff) {
     if (!onoffmove || onoff > 0) return;
     e.preventDefault();
     let { xs, ys } = getClientXY(e);
-    let pospai = pai.getBoundingClientRect();
+    let pospai = pai.children[0].getBoundingClientRect();
     let x = xs - pospai.left - eixoObjX,
       y = ys - pospai.top - eixoObjY;
 
-    x = Math.max(0, Math.min(x, pai.offsetWidth - object.offsetWidth));
-    y = Math.max(0, Math.min(y, pai.offsetHeight - object.offsetHeight));
+    x = Math.max(
+      0,
+      Math.min(x, pai.children[0].offsetWidth - object.offsetWidth)
+    );
+    y = Math.max(
+      0,
+      Math.min(y, pai.children[0].offsetHeight - object.offsetHeight)
+    );
     armazepos.x = Math.round(x, 2);
     armazepos.y = Math.round(y, 2);
     object.style.left = x + "px";

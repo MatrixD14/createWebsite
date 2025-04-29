@@ -59,6 +59,6 @@ export function create(html, armaz, select) {
       el = onoffedita("0", "none");
     }
   });
-  pai.appendChild(object);
+  pai.children[0].appendChild(object);
   return object;
 }
