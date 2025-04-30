@@ -46,20 +46,12 @@ export function moveobject(object, onoff) {
     object.style.left = `calc(${lefts}% - ${
       object.offsetWidth * (lefts / 100)
     }px)`;
-    // object.style.top = `calc(${tops}% - ${
-    //   object.offsetHeight * (tops / 100)
-    // }px)`;
     object.style.top = tops + "%";
 
     x = Math.max(0, Math.min(lefts, 100));
-    y = Math.max(0, Math.min(tops, 100));
+    // y = Math.max(0, Math.min(tops, 100));
     armazepos.x = Math.round(x);
     armazepos.y = Math.round(y);
-    // console.log(
-    //   `largura: ${paiwidth - object.offsetWidth}\naltura: ${
-    //     paiheight - object.offsetHeight
-    //   }`
-    // );
     dados();
   }
 

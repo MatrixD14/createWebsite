@@ -9,9 +9,9 @@ export function startSite() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>area de test</title>
       <style>
-        body{ flex;text-align:center;background: rgb(255, 255, 255);
+        body{text-align:center;background: black;
          position: relative;  margin: 0;height: 100vh;
-         display: flex;align-items: center;justify-content: center;
+         display: block;align-items: center;justify-content: center;
          }
       </style>
       </head>
@@ -22,6 +22,6 @@ export function startSite() {
       type: "text/html",
     });
     let url = URL.createObjectURL(blob);
-    window.open(url, "_blank");
+    window.open(url);
   });
 }
