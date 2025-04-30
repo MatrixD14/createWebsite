@@ -5,6 +5,7 @@ export function moveobject(object, onoff) {
   let eixoObjX = 0,
     eixoObjY = 0,
     onoffmove = false;
+
   object.style.position = "absolute";
   object.style.cursor = "grab";
   function getClientXY(e) {
@@ -16,8 +17,8 @@ export function moveobject(object, onoff) {
   function startmove(e) {
     e.stopPropagation();
     onoffmove = true;
-    let { xs, ys } = getClientXY(e);
     let obj = object.getBoundingClientRect();
+    let { xs, ys } = getClientXY(e);
     eixoObjX = xs - obj.left;
     eixoObjY = ys - obj.top;
 
@@ -31,22 +32,33 @@ export function moveobject(object, onoff) {
     if (!onoffmove || onoff > 0) return;
     e.preventDefault();
     let { xs, ys } = getClientXY(e);
-    let pospai = pai.children[0].getBoundingClientRect();
+    let pospai = pai.children[0].getBoundingClientRect(),
+      paiheight = pai.children[0].offsetHeight,
+      paiwidth = pai.children[0].offsetWidth;
     let x = xs - pospai.left - eixoObjX,
-      y = ys - pospai.top - eixoObjY;
+      y = ys - pospai.top - eixoObjY,
+      widthsubX = paiwidth - object.offsetWidth,
+      heightsubY = paiheight - object.offsetHeight;
+    x = Math.max(0, Math.min(x, widthsubX));
+    y = Math.max(0, Math.min(y, heightsubY));
+    let lefts = (x / widthsubX) * 100,
+      tops = (y / heightsubY) * 100;
+    object.style.left = `calc(${lefts}% - ${
+      object.offsetWidth * (lefts / 100)
+    }px)`;
+    object.style.top = `calc(${tops}% - ${
+      object.offsetHeight * (tops / 100)
+    }px)`;
 
-    x = Math.max(
-      0,
-      Math.min(x, pai.children[0].offsetWidth - object.offsetWidth)
-    );
-    y = Math.max(
-      0,
-      Math.min(y, pai.children[0].offsetHeight - object.offsetHeight)
-    );
-    armazepos.x = Math.round(x, 2);
-    armazepos.y = Math.round(y, 2);
-    object.style.left = x + "px";
-    object.style.top = y + "px";
+    x = Math.max(0, Math.min(lefts, 100));
+    y = Math.max(0, Math.min(tops, 100));
+    armazepos.x = Math.round(x);
+    armazepos.y = Math.round(y);
+    // console.log(
+    //   `largura: ${paiwidth - object.offsetWidth}\naltura: ${
+    //     paiheight - object.offsetHeight
+    //   }`
+    // );
     dados();
   }
 
