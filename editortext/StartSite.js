@@ -5,11 +5,14 @@ export function startSite() {
       <!DOCTYPE html>
       <html>
       <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>area de test</title>
       <style>
-        body{padding: 0;margin: 0;justify-content: center;align-items:
-         center;display: flex;text-align:center;background: rgb(255, 255, 255);
-         pointer-events: all;position: relative;width: 100%; height: 100%;box-sizing: border-box;}
+        body{ flex;text-align:center;background: rgb(255, 255, 255);
+         position: relative;  margin: 0;height: 100vh;
+         display: flex;align-items: center;justify-content: center;
+         }
       </style>
       </head>
       <body >

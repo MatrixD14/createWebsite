@@ -38,7 +38,7 @@ export function moveobject(object, onoff) {
     let x = xs - pospai.left - eixoObjX,
       y = ys - pospai.top - eixoObjY,
       widthsubX = paiwidth - object.offsetWidth,
-      heightsubY = paiheight - object.offsetHeight;
+      heightsubY = paiheight;
     x = Math.max(0, Math.min(x, widthsubX));
     y = Math.max(0, Math.min(y, heightsubY));
     let lefts = (x / widthsubX) * 100,
@@ -46,9 +46,10 @@ export function moveobject(object, onoff) {
     object.style.left = `calc(${lefts}% - ${
       object.offsetWidth * (lefts / 100)
     }px)`;
-    object.style.top = `calc(${tops}% - ${
-      object.offsetHeight * (tops / 100)
-    }px)`;
+    // object.style.top = `calc(${tops}% - ${
+    //   object.offsetHeight * (tops / 100)
+    // }px)`;
+    object.style.top = tops + "%";
 
     x = Math.max(0, Math.min(lefts, 100));
     y = Math.max(0, Math.min(tops, 100));
