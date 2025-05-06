@@ -23,7 +23,7 @@
       <div class="alinha interface">
         <div id="dadosObject">
           <div id="status"></div>
-          <input type="submit" id="fundo" value="fundo" name="funso" />
+          <input type="submit" id="fundo" value="fundo" name="fundo" />
           <input type="submit" value="export" name="export" id="export" />
           <label for="imports" id="import">import</label>
           <input type="file" name="imports" id="imports" />
@@ -53,9 +53,23 @@
             <label for="font_size">Font-size:</label>
             <input type="text" name="font_size" id="font_size" />
             <label for="Color">Color:</label>
-            <input type="text" name="Color" id="Color" />
+            <div id="editetxt">
+              <input type="text" name="Color" id="Color" class="txt" />
+              <input type="color" name="Color" id="Color1" class="activetxt" />
+            </div>
             <label for="background">Background:</label>
-            <input type="text" name="background" id="background" />
+            <div id="editetxt">
+              <input
+                type="text"
+                name="background"
+                id="background"
+                class="txt" />
+              <input
+                type="color"
+                name="background"
+                id="background1"
+                class="activetxt" />
+            </div>
             <label for="border">Border:</label>
             <input type="text" name="border" id="border" />
             <label for="border_radius">Border-radius:</label>

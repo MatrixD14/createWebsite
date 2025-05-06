@@ -10,5 +10,5 @@ const propriedade = () => {
   borderradio: document.querySelector("#border_radius");
 };
 export function ArrayTypeTag(object) {
-  return typetag[object] || [];
+  return propriedade[object] || [];
 }

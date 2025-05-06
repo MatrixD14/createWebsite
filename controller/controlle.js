@@ -5,6 +5,7 @@ import { inputcreateObject, inputcreateObjectSpecific } from "./createInput.js";
 import { pesquisatag } from "./pesquisatag.js";
 import { onoffEditetxt } from "./editortxt.js";
 import { startSite } from "../editortext/StartSite.js";
+import { conffundo } from "./confFundo.js";
 import {
   inputObj,
   screenName1,
@@ -19,14 +20,18 @@ import {
   select,
   armaze,
   inputSpecific,
+  screenColor1,
+  background1,
 } from "./variavels.js";
 screenName1.value = "name objetc";
 screenName2.value = screenName1.value;
 frontSize.value = "";
 screenX.value = "200px";
 screenY.value = "50px";
-background.value = "gray";
-screenColor.value = "white";
+background.value = "#77767b";
+background1.value = background.value;
+screenColor.value = "#ffffff";
+screenColor1.value = screenColor.value;
 border.value = "none";
 border_radio.value = "0";
 
@@ -40,6 +45,7 @@ inputSpecific.forEach((e) => {
 });
 pesquisatag();
 onoffEditetxt();
+conffundo();
 startSite();
 document.querySelector("#enter").addEventListener("click", function () {
   if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
@@ -59,7 +65,6 @@ document.querySelector("#enter").addEventListener("click", function () {
     }
   }
 });
-
 function buttonCreate(name, typeObject) {
   document.querySelector(name).addEventListener("click", () => {
     if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {

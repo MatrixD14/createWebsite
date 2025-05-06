@@ -49,9 +49,11 @@ export function create(html, armaz, select) {
       return (onoff = 0);
     }
     delet.style.background = "rgba(255, 0, 0, 0.75)";
+    pai.children[0].style.outline = "none";
     onoffedita("0", "none");
     deselectObject(armaz, select);
   });
+  pai.children[0].style.outline = "none";
   moveobject(object, onoff);
   armaz.armaz.forEach((el) => {
     if (el != object) {

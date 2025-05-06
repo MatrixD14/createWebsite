@@ -49,7 +49,6 @@ export function moveobject(object, onoff) {
     object.style.top = tops + "%";
 
     x = Math.max(0, Math.min(lefts, 100));
-    // y = Math.max(0, Math.min(tops, 100));
     armazepos.x = Math.round(x);
     armazepos.y = Math.round(y);
     dados();
