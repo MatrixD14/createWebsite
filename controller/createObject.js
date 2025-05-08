@@ -14,6 +14,7 @@ import {
   border_radio,
   pai,
   delet,
+  fundoObj,
 } from "./variavels.js";
 import { dados } from "./status.js";
 export function create(html, armaz, select) {
@@ -39,7 +40,6 @@ export function create(html, armaz, select) {
     e.stopPropagation();
     select.selet = object;
     onoff++;
-
     if (onoff === 3) {
       onoffedita("1", "auto");
       object.style.outline = convertcolor(object);
@@ -58,8 +58,11 @@ export function create(html, armaz, select) {
   armaz.armaz.forEach((el) => {
     if (el != object) {
       el.style.outline = "none";
-      el = onoffedita("0", "none");
+      onoffedita("0", "none");
     }
+  });
+  fundoObj.addEventListener("click", () => {
+    onoff = 0;
   });
   pai.children[0].appendChild(object);
   return object;

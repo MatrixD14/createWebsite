@@ -45,8 +45,8 @@ inputSpecific.forEach((e) => {
 });
 pesquisatag();
 onoffEditetxt();
-conffundo();
 startSite();
+conffundo(armaze, select);
 document.querySelector("#enter").addEventListener("click", function () {
   if (parseInt(screenX.value) > 0 && parseInt(screenY.value) > 0) {
     if (select.selet !== null) {
